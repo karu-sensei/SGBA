@@ -1,0 +1,54 @@
+<div class="row-fluid titulo"><h4>| </h4></div>
+<div id="cabecera">
+    <label for="" id="log">
+    <strong><?php echo $this->titulo?></strong>
+    </label>
+</div>
+<?php
+$form = $this->form;
+$form->prepare();
+/*
+// Assuming the "contact/process" route exists...
+$form->setAttribute('action', $this->url('application/formulario/recibe'));
+
+// Set the method attribute for the form
+$form->setAttribute('method', 'post');
+*/
+
+$form->setAttributes(array(
+    'action' => $this->url.'/application/login/index',
+    'method' => 'post'
+));
+// Get the form label plugin
+$formLabel = $this->plugin('formLabel');
+
+// Render the opening tag
+echo $this->form()->openTag($form);
+?>
+
+<div id="login">
+
+<?php
+    $usuario = $form->get('usuario');
+    echo $formLabel->openTag().$usuario->getLabel();
+    echo $this->formElementErrors($usuario);
+    echo $formLabel->closeTag();
+	echo $this->formInput($usuario);
+?>
+
+
+<?php
+    $pass = $form->get('pass');
+    echo $formLabel->openTag().$pass->getLabel();
+    echo $this->formElementErrors($pass);
+    echo $formLabel->closeTag();
+	echo $this->formInput($pass);
+?>
+
+<a id="recuperar" href="#">Recuperar Password</a>
+
+<?php echo $this->formElement($form->get('send')) ?>
+
+<?php echo $this->form()->closeTag() ?>
+
+</div>

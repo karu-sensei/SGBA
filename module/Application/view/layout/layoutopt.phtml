@@ -1,0 +1,85 @@
+<?php echo $this->doctype(); ?>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?php echo $this->headTitle('ZF2 '. $this->translate('Skeleton Application'))->setSeparator(' - ')->setAutoEscape(false) ?>
+
+        <?php echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0') ?>
+
+        <!-- Le styles -->
+        <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+                        //->prependStylesheet($this->basePath() . '/css/bootstrap-responsive.min.css')
+                        ->prependStylesheet($this->basePath() . '/css/style.css')
+						->prependStylesheet($this->basePath() . '/css/prueba.css')
+                        //->prependStylesheet($this->basePath() . '/css/bootstrap.min.css') ?>
+
+        <!-- Scripts -->
+        <?php echo $this->headScript()->prependFile($this->basePath() . '/js/html5.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+                                      ->prependFile($this->basePath() . '/js/bootstrap.min.js')
+                                      ->prependFile($this->basePath() . '/js/jquery.min.js') ?>
+
+    </head>
+    <body>
+	  <header>
+		<nav>
+			<ul class="menu">
+				<li><a href="">Busqueda</a></li>
+				<li><a href="">Prestamos</a></li>
+				<li><a href="">Reservas</a></li>
+				<li><a href="">Multas</a></li>
+				<li><a href="">Usuarios</a>
+					<ul>
+						<li><a href="">Ingresar</a></li>
+						<li><a href="">Editar</a></li>
+						<li><a href="">Eliminar</a></li>
+						<li><a href="">tipos</a></li>
+					</ul>
+				</li>
+				<li><a href="">Material</a>
+					<ul>
+						<li><a href="">Libro</a>
+							<ul>
+								<li><a href="">Ingresar</a></li>     
+					    	    <li><a href="">Editar</a></li>
+							</ul>
+						</li>
+						<li><a href="">Tesis</a>
+							<ul>
+								<li><a href="">Ingresar</a></li>
+					    	   	<li><a href="">Editar</a></li>
+							</ul>
+						</li>
+						<li><a href="">Revista</a>
+							<ul>
+								<li><a href="">Ingresar</a></li>
+					    	    <li><a href="">Editar</a></li>
+							</ul>
+						</li>
+		                <li><a href="">Eliminar</a></li>
+						<li><a href="">Estado</a></li>
+					</ul>
+				</li>
+				<li><a href="">Informes</a>
+					<ul>
+						<li><a href="">Alumnos morosos</a></li>
+						<li><a href="">Material prestado</a></li>
+						<li><a href="">compras historicas</a></li>
+						<li><a href="">Inventario</a></li>
+						<li><a href="">Estadisticas</a></li>
+					</ul>
+				</li>
+				<li><a href="">Datos</a></li>
+			</lu>	
+		</nav>
+	</header>
+        <div class="container">
+            <?php echo $this->content; ?>
+            <hr>
+            <footer>
+                Universidad de Concepcion | Sistema de Gestion Bibliografico Astronomia (SIGBA)
+            </footer>
+        </div> <!-- /container -->
+        <?php echo $this->inlineScript() ?>
+    </body>
+</html>

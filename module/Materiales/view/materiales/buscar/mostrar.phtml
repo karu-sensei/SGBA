@@ -1,0 +1,26 @@
+<h1><?php echo ($this->titulo)?></h1>
+
+
+<div class="tablas" style="height:300px; overflow: scroll;overflow-x:hidden; border: 1px solid #C3C3C3;">
+<table class="table table-bordered table-striped">'; 
+			<?php $i=0; ?>
+			<?php foreach($datos as $datos){ ?> 
+            <tr>
+            <td><?php echo $this->datos[$i]['isbn']   ?></td>
+            <td>Titulo<br />Autor<br />Edicion<br />A&ntilde;o</td>
+            <td><?php echo $this->datos[$i]['titulo']   ?><br />
+            <?php echo $this->datos[$i]['autor']   ?><br />
+            <?php echo $this->datos[$i]['edicion']   ?><br />
+            <?php echo $this->datos[$i]['anio']   ?></td>;
+            <td>
+			<a href="<?php echo $this->basePath() ?>/materiales/ver/index/<?php echo $datos["id"]?>"><input type="button" value="ver"></a>
+			<a href="<?php echo $this->basePath() ?>/materiales/editar/<?php echo $datos["tipo_material_nombre"]?>/<?php echo $datos["id"]?>"><input type="button" value="editar"></a>
+			<a href="<?php echo $this->basePath() ?>/reservas/ingreso/index/<?php echo $datos["id"]?>"><input type="button" value="reservar"></a>
+			<a href="<?php echo $this->basePath() ?>/prestamos/ingreso/index/<?php echo $datos["id"]?>"><input type="button" value="prestamo"></a></td>
+            <?php $i++; ?>
+
+       		</tr>
+       		<?php  } ?>
+       	</table>
+</div>
+

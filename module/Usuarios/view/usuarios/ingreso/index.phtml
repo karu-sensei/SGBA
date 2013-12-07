@@ -1,0 +1,171 @@
+<div class="row-fluid titulo" style="background:#003277">
+<div class="container">
+<h4 style="color:white"><?php echo $this->titulo?></h4>
+</div>
+</div>
+<div class="row-fluid">
+<br>
+<br>
+</div>
+<div class="container" >
+<?php
+echo($this->result3);
+$form = $this->form;
+$form->prepare();
+/*
+// Assuming the "contact/process" route exists...
+$form->setAttribute('action', $this->url('application/formulario/recibe'));
+
+// Set the method attribute for the form
+$form->setAttribute('method', 'post');
+*/
+
+?>
+<div class="row-fluid">
+        <div class="span6 well" style="padding-left:4%;">
+
+<?php
+
+$form->setAttributes(array(
+    'action' => $this->url.'/usuarios/ingreso',
+    'method' => 'post'
+));
+// Get the form label plugin
+$formLabel = $this->plugin('formLabel');
+
+// Render the opening tag
+echo $this->form()->openTag($form);
+?>
+
+
+<br>
+<?php
+    $rut = $form->get('rut');
+    echo $formLabel->openTag().$rut->getOption('label')." ";
+    echo $this->formElementErrors($rut);
+    echo $formLabel->closeTag();
+	echo $this->formInput($rut);
+?>
+<br>
+<br>
+<?php
+    $mat = $form->get('matricula');
+    echo $formLabel->openTag().$mat->getOption('label')." ";
+    echo $this->formElementErrors($mat);
+    echo $formLabel->closeTag();
+	echo $this->formInput($mat);
+?>
+<br>
+<br>
+<?php
+    $name = $form->get('nombre');
+    echo $formLabel->openTag().$name->getOption('label')." ";
+    echo $this->formElementErrors($name);
+    echo $formLabel->closeTag();
+	echo $this->formInput($name);
+?>
+
+<br>
+<br>
+<?php
+    $direccion = $form->get('direccion');
+    echo $formLabel->openTag().$direccion->getOption('label')." ";
+    echo $this->formElementErrors($direccion);
+    echo $formLabel->closeTag();
+    echo $this->formInput($direccion);
+?>
+
+<br>
+<br>
+<?php
+	 $celular = $form->get('celular');
+    echo $formLabel->openTag().$celular->getOption('label')." ";
+	echo $this->formElementErrors($celular);
+    echo $formLabel->closeTag();
+	echo $this->formInput($celular);
+    
+?>
+
+<br>
+<br>
+<?php
+   $fono = $form->get('fono');
+    echo $formLabel->openTag().$fono->getOption('label')." ";
+    echo $this->formElementErrors($fono);
+    echo $formLabel->closeTag();
+	echo $this->formInput($fono);
+?>
+
+<br>
+<br>
+<?php
+    $correo = $form->get('correo');
+    echo $formLabel->openTag().$correo->getOption('label')." ";
+    echo $this->formElementErrors($correo);
+    echo $formLabel->closeTag();
+	 echo $this->formInput($correo);
+?>
+</div>
+<div class="span6 well" style="padding-left:4%; padding-bottom:60px">
+<br>
+<?php
+    $tipo = $form->get('tipo');
+    echo $formLabel->openTag().$tipo->getLabel();
+    echo $this->formElementErrors($tipo);
+    echo $formLabel->closeTag();
+    echo $this->formSelect($tipo);
+?>
+<br>
+<br>
+<?php
+    $carrera = $form->get('carrera');
+    echo $formLabel->openTag().$carrera->getLabel();
+    echo $this->formElementErrors($carrera);
+    echo $formLabel->closeTag();
+    echo $this->formSelect($carrera);
+?>
+<br>
+<br>
+<?php
+    $pregunta = $form->get('pregunta');
+    echo $formLabel->openTag().$pregunta->getLabel();
+    echo $this->formElementErrors($pregunta);
+    echo $formLabel->closeTag();
+    echo $this->formSelect($pregunta);
+?>
+<br>
+<br>
+<?php
+    $respuesta = $form->get('respuesta');
+    echo $formLabel->openTag().$respuesta->getOption('label')." ";
+    echo $this->formElementErrors($respuesta);
+    echo $formLabel->closeTag();
+    echo $this->formInput($respuesta);
+?>
+<br>
+<br>
+<?php
+    $password = $form->get('password');
+    echo $formLabel->openTag().$password->getOption('label')." ";
+    echo $this->formElementErrors($password);
+    echo $formLabel->closeTag();
+    echo $this->formInput($password);
+?>
+<br>
+<br>
+<?php
+    $confirmar = $form->get('confirmar');
+    echo $formLabel->openTag().$confirmar->getOption('label')." ";
+    echo $this->formElementErrors($confirmar);
+    echo $formLabel->closeTag();
+    echo $this->formInput($confirmar);
+?>
+
+<br>
+<br>
+<br>
+<?php echo $this->formElement($form->get('send')) ?>
+</div>
+</div>
+<?php echo $this->form()->closeTag() ?>
+</div>

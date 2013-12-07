@@ -1,0 +1,144 @@
+<?php use Zend\Session\Container; ?>
+
+<?php echo $this->doctype(); ?>
+
+<html lang="en" style="overflow-x:hidden">
+    <head>
+        <meta charset="utf-8">
+        <?php echo $this->headTitle('ZF2 '. $this->translate('Skeleton Application'))->setSeparator(' - ')->setAutoEscape(false) ?>
+
+        <?php echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0') ?>
+
+        <!-- Le styles -->
+        <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+        ->prependStylesheet($this->basePath() . '/css/prueba.css')
+                        ->prependStylesheet($this->basePath() . '/css/bootstrap-responsive.min.css')
+                        ->prependStylesheet($this->basePath() . '/css/style.css')
+                        ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css')
+                         ?>
+
+
+        <!-- Scripts -->
+        <?php echo $this->headScript()->prependFile($this->basePath() . '/js/html5.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+                                      ->prependFile($this->basePath() . '/js/bootstrap.min.js')
+                                      ->prependFile($this->basePath() . '/js/jquery.min.js') ?>
+
+
+    <script type="text/javascript">
+    $(document).ready(function()
+    {
+        var i =false;
+
+
+            $(".ocultar").click(function()
+            {
+
+                $(".item").toggle();
+            });
+            
+
+    });
+    </script>
+
+    </head>
+    <body>
+       <header>
+
+       <a href=<?php echo $this->basepath().'../application/login/logout' ?>><button id="logout"></button></a> 
+		<?php $user_session = new Container('user');
+	//if($user_session->tipo){ ?>
+    <div class="container-fluid">
+        <div class="nav">
+            <ul class="menu">
+                <div class="ocultar">
+                    <li id="ocultar"><a href="#">MENU</a></li></div>
+                <div class="items">
+                    <li class="item"><a href="">Busqueda</a></li>
+                    <li class="item"><a href="">Prestamos</a></li>
+                    <li class="item"><a href="">Reservas</a>
+				         <ul>
+                            <li><a href=<?php echo $this->basepath().'/reservas/ingreso/index' ?>>Ingresar</a></li>
+				         </ul>		
+				    </li>
+                    <li class="item"><a href="">Multas</a></li>
+                    <li class="item"><a href="">Usuarios</a>
+                        <ul>
+                            <li><a href="<?php echo $this->basepath().'/usuarios/ingreso/index' ?>">Ingresar</a></li>
+                            <li><a href="<?php echo $this->basepath().'/usuarios/editar/index' ?>">Editar</a></li>
+                            <li><a href="<?php echo $this->basepath().'/usuarios/elimina/index' ?>">Eliminar</a></li>
+                            <li><a href="">Tipos de usuario</a>
+						      <ul>
+						          <li><a href="<?php echo $this->basepath().'/usuarios/gestion/tipousu' ?>">Agregar Tipo</a></li>
+						          <li><a href="<?php echo $this->basepath().'/usuarios/editatipo/index' ?>">Modificar Tipo</a></li>
+						      </ul>
+						    </li>
+						<li><a href="">Carreras</a>
+						<ul>
+						<li><a href="<?php echo $this->basepath().'/usuarios/gestion/carreras' ?>">Agregar</a></li>
+						<li><a href="<?php echo $this->basepath().'/usuarios/gestion/eliminarcarrera' ?>">Eliminar</a></li>
+						</ul>
+						</li>
+						
+						
+                    </ul>
+                    </li>
+                    <li class="item"><a href="">Material</a>
+                    <ul>
+                        <li><a href="">Libro</a>
+                            <ul>
+                                <li><a href=<?php echo $this->basepath().'/materiales/ingreso/libro' ?>>Ingresar</a></li>     
+                                <li><a href="">Editar</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="">Tesis</a>
+                            <ul>
+                                <li><a href=<?php echo $this->basepath().'/materiales/ingreso/tesis' ?>>Ingresar</a></li>
+                                <li><a href="">Editar</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="">Revista</a>
+                            <ul>
+                                <li><a href="<?php echo $this->basepath().'/materiales/ingreso/revista' ?>">Ingresar</a></li>
+                                <li><a href="">Editar</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="">Eliminar</a></li>
+                        <li><a href="">Estado</a></li>
+                    </ul>
+                    </li>
+                    <li class="item"><a href="">Informes</a>
+                    <ul>
+                        <li><a href=<?php echo $this->basepath().'/informes/informes/morosos' ?>>Alumnos morosos</a></li>
+                        <li><a href=<?php echo $this->basepath().'/informes/informes/matpres' ?>>Material prestado</a></li>
+                        <li><a href="<?php echo $this->basepath().'/informes/informes/historico' ?>">compras historicas</a></li>
+                        <li><a href="<?php echo $this->basepath().'/informes/informes/inventario' ?>">Inventario</a></li>
+						<li><a href="<?php echo $this->basepath().'/informes/informes/matsug' ?>">Material a solicitar</a></li>
+						<li><a href="<?php echo $this->basepath().'/informes/informes/matsol' ?>">Material mas solicitado</a></li>
+                        <li><a href="">Estadisticas</a></li>
+                    </ul>
+                </li>
+				
+                <li class="item"><a href="">Datos</a>
+				    <ul>
+				        <li><a href="">Ver Datos de usuario</a></li>
+				        <li><a href="">Cambiar Contraseña</a></li>
+				        <li><a href="">Cambiar Pregunta</a></li>
+				    </ul>
+				</li>
+            </ul> 
+            </div>
+        </div>
+        </div>
+<?php// } ?>			
+    </header>
+    
+        <div class="row-fluid">
+            <?php echo $this->content; ?>
+            <hr>
+            <footer>
+                <p style="color:white">&copy; 2013 - <?php echo date('Y') ?>  Sistema de Gestion Bibliografico de Astronomia (SGBA). <?php echo $this->translate('All rights reserved.') ?></p>
+            </footer>
+        </div> <!-- /container -->
+        <?php echo $this->inlineScript() ?>
+    </body>
+</html>

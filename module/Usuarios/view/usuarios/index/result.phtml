@@ -1,0 +1,11 @@
+<h1><?php echo $this->texto;?></h1>
+<ul>
+<?php
+foreach($datos as $dato)
+{
+    ?>
+    <li><?php echo $dato["clave"]?> - <?php echo $dato["b"]?>- <?php echo $dato["c"]?></li>
+    <?php
+}
+?>
+</ul>

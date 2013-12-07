@@ -1,0 +1,55 @@
+<div class="row-fluid" style="background:#003277">
+<div class="container">
+<h4 style="color:white"><?php echo $this->titulo?></h4>
+</div>
+</div>
+<div class="row-fluid">
+<br>
+<br>
+</div>
+<div class="container well" >
+<br>
+<br>
+<?php
+$form = $this->form;
+$form->prepare();
+
+$form->setAttributes(array(
+    'action' => $this->url.'/usuarios/elimina/eliminar',
+    'method' => 'post'
+));
+// Get the form label plugin
+$formLabel = $this->plugin('formLabel');
+
+// Render the opening tag
+echo $this->form()->openTag($form);
+$this->datos=$this->datos[0];
+?>
+
+<table class="table">
+
+<tr><th>Rut</th><th>Matricula</th><th>Nombre</th><th>Direccion</th><th>Telefono</th><th>Correo</th><th>Celular</th><th>Carrera</th><th>Tipo de Usuario</th></tr>
+<tr>
+<td><?php echo $this->datos['rut'] ?></td>
+<td><?php echo $this->datos['matricula'] ?></td>
+<td><?php echo $this->datos['nombre'] ?></td>
+<td><?php echo $this->datos['direccion'] ?></td>
+<td><?php echo $this->datos['telefono'] ?></td>
+<td><?php echo $this->datos['mail'] ?></td>
+<td><?php echo $this->datos['telefono_movil'] ?></td>
+<td><?php echo $this->datos['carreras_nombre'] ?></td>
+<td><?php echo $this->datos['tipo_usuario_nombre'] ?></td>
+
+</tr>
+</table>
+<?php echo $this->formElement($form->get('oculto')) ?>
+<a href="<?php echo $this->basePath() ?>/usuarios/elimina/index">Volver Atr&aacute;s</a> 
+<?php
+    echo $this->formElement($form->get('eliminar'));
+?>
+<br>
+<br>
+</div>
+<?php echo $this->form()->closeTag() ?>
+
+</form>

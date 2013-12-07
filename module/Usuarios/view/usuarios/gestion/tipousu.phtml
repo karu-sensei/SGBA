@@ -1,0 +1,151 @@
+<div class="row-fluid titulo" style="background:#003277">
+<div class="container">
+<h4 style="color:white"><?php echo $this->titulo?></h4>
+</div>
+</div>
+<div class="row-fluid">
+<br>
+<br>
+</div>
+<div class="container well" >
+<?php
+$form = $this->form;
+$form->prepare();
+/*
+// Assuming the "contact/process" route exists...
+$form->setAttribute('action', $this->url('application/formulario/recibe'));
+
+// Set the method attribute for the form
+$form->setAttribute('method', 'post');
+*/
+
+$form->setAttributes(array(
+    'action' => $this->url.'/usuarios/gestion/guardatipo',
+    'method' => 'post'
+));
+// Get the form label plugin
+$formLabel = $this->plugin('formLabel');
+
+// Render the opening tag
+echo $this->form()->openTag($form);
+?>
+
+
+
+<?php
+    $nombre_tipo = $form->get('nombre_tipo');
+    echo $formLabel->openTag().$nombre_tipo->getOption('label')." ";
+    echo $this->formElementErrors($nombre_tipo);
+    echo $formLabel->closeTag();
+	echo $this->formInput($nombre_tipo);
+?>
+
+
+<hr />
+<div>
+<div class="span12">
+        <h2>Modulos</h2>
+        <div class="row-fluid">
+          <div class="span6">
+            <div class="span3">
+            <?php
+              $usuario = $form->get('registro_usuario');
+              echo $formLabel->openTag().$usuario->getLabel(); ?>
+              </div>
+              <div class="span3">
+              <?php
+              echo $this->formCheckbox($usuario);
+              echo $formLabel->closeTag();   
+            ?>
+            </div>
+          </div>
+
+          <div class="span6">
+            <div class="span3">
+            <?php
+              $materiales = $form->get('admin_material');
+              echo $formLabel->openTag().$materiales->getLabel(); ?>
+              </div>
+              <div class="span3">
+             <?php
+              echo $this->formCheckbox($materiales);
+              echo $formLabel->closeTag(); 
+            ?>
+          </div>
+          </div>
+        </div>
+
+        <div class="row-fluid">
+          <div class="span6">
+            <div class="span3">
+            <?php
+              $reservas  = $form->get('reservas_material');
+              echo $formLabel->openTag().$reservas->getLabel(); ?>
+              </div>
+            <div class="span3">
+            <?php
+              echo $this->formCheckbox($reservas);
+              echo $formLabel->closeTag(); 
+              
+            ?>
+            </div>
+          </div>
+          <div class="span6">
+            <div class="span3">
+            <?php
+              $multas = $form->get('multas_material');
+              echo $formLabel->openTag().$multas->getLabel(); ?>
+              </div>
+              <div class="span3">
+            <?php
+              echo $this->formCheckbox($multas);
+              echo $formLabel->closeTag(); 
+              
+            ?>
+            </div>
+          </div>
+        </div>
+         <div class="row-fluid">
+          <div class="span6">
+            <div class="span3">
+            <?php
+              $informes = $form->get('emision_informes');
+              echo $formLabel->openTag().$informes->getLabel(); ?>
+              </div>
+              <div class="span3">
+              <?php
+              echo $this->formCheckbox($informes);
+              echo $formLabel->closeTag(); 
+              
+            ?>
+            </div>
+          </div>
+          <div class="span6">
+            <div class="span3">
+            <?php
+             $prestamos = $form->get('registro_prestamos');
+             echo $formLabel->openTag().$prestamos->getLabel(); ?>
+               </div>
+             <div class="span3">
+             <?php
+              echo $this->formCheckbox($prestamos);
+              echo $formLabel->closeTag(); 
+              
+            ?>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+
+</div>
+        <div class="span10">
+        <?php echo $this->formElement($form->get('send')) ?>
+        </div>
+</div>
+
+
+
+
+<?php echo $this->form()->closeTag() ?>

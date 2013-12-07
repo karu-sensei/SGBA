@@ -1,0 +1,101 @@
+<div class="row-fluid titulo">
+<div class="container">
+<h4 style="color:white"><?php echo $this->titulo?></h4>
+
+</div>
+</div>
+<div class="row-fluid">
+<br><?php echo $this->mensaje ?>
+<br>
+</div>
+<div class="container well" style=" margin:0 auto 0 auto;" >
+
+<br>
+<?php
+$form = $this->form;
+$form->prepare();
+/*
+// Assuming the "contact/process" route exists...
+$form->setAttribute('action', $this->url('application/formulario/recibe'));
+
+// Set the method attribute for the form
+$form->setAttribute('method', 'post');
+*/
+
+$form->setAttributes(array(
+    'action' => $this->url.'./usuarios/editar/editar',
+    'method' => 'post'
+));
+// Get the form label plugin
+$formLabel = $this->plugin('formLabel');
+
+// Render the opening tag
+echo $this->form()->openTag($form);
+?>
+
+
+
+<?php
+    $name = $form->get('nombre');
+    echo $formLabel->openTag().$name->getOption('label')." ";
+    echo $this->formElementErrors($name);
+    echo $formLabel->closeTag();
+	echo $this->formInput($name);
+?>
+
+
+<?php
+    $direccion = $form->get('direccion');
+    echo $formLabel->openTag().$direccion->getOption('label')." ";
+    echo $this->formElementErrors($direccion);
+    echo $formLabel->closeTag();
+    echo $this->formInput($direccion);
+?>
+
+<?php
+    $fono = $form->get('fono');
+    echo $formLabel->openTag().$fono->getOption('label')." ";
+    echo $this->formElementErrors($fono);
+    echo $formLabel->closeTag();
+	echo $this->formInput($fono);
+?>
+
+
+<?php
+    $celular = $form->get('celular');
+    echo $formLabel->openTag().$celular->getOption('label')." ";
+    echo $this->formElementErrors($celular);
+    echo $formLabel->closeTag();
+    echo $this->formInput($celular);
+?>
+
+
+<?php
+    $correo = $form->get('correo');
+    echo $formLabel->openTag().$correo->getOption('label')." ";
+    echo $this->formElementErrors($correo);
+	echo $this->formElementErrors($form->get('rut'));
+	echo $this->formElementErrors($form->get('matricula'));
+	echo $this->formElementErrors($form->get('respuesta'));
+	echo $this->formElementErrors($form->get('password'));
+    echo $formLabel->closeTag();
+	echo $this->formInput($correo);
+?>
+
+
+<?php echo $this->formHidden($form->get('oculto')) ?>
+
+<br>
+<br>
+<div class="row-fluid">
+    <div class="span1">
+        <?php echo $this->formElement($form->get('send')) ?>
+    </div>
+    <div class="span1">
+        <?php echo $this->formElement($form->get('eliminar')) ?>
+    </div>
+</div>
+<?php echo $this->form()->closeTag() ?>
+
+<?php echo ($this->a) ?>
+</div>

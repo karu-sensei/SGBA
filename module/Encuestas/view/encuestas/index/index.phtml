@@ -1,0 +1,131 @@
+<h1><?php echo $this->titulo?></h1>
+<?php
+$form = $this->form;
+$form->prepare();
+/*
+// Assuming the "contact/process" route exists...
+$form->setAttribute('action', $this->url('application/formulario/recibe'));
+
+// Set the method attribute for the form
+$form->setAttribute('method', 'post');
+*/
+
+$form->setAttributes(array(
+    'action' => $this->url.'/encuestas/index/guardar',
+    'method' => 'post'
+));
+// Get the form label plugin
+$formLabel = $this->plugin('formLabel');
+
+// Render the opening tag
+echo $this->form()->openTag($form);
+?>
+
+<div class="form_element">
+
+<?php
+    $rut = $form->get('rut');
+    echo $formLabel->openTag().$rut->getOption('label')." ";
+    echo $this->formElementErrors($rut);
+    echo $formLabel->closeTag();
+  echo $this->formInput($rut);
+?>
+</div>
+
+<hr />
+
+<div class="form_element">
+
+<?php
+    $titulo = $form->get('titulo');
+    echo $formLabel->openTag().$titulo->getOption('label')." ";
+    echo $this->formElementErrors($titulo);
+    echo $formLabel->closeTag();
+  echo $this->formInput($titulo);
+?>
+</div>
+
+<hr />
+<div class="form_element">
+
+<?php
+    $autor = $form->get('autor');
+    echo $formLabel->openTag().$autor->getOption('label')." ";
+    echo $this->formElementErrors($autor);
+    echo $formLabel->closeTag();
+  echo $this->formInput($autor);
+?>
+</div>
+
+<hr />
+
+<div class="form_element">
+
+<?php
+    $volumen = $form->get('volumen');
+    echo $formLabel->openTag().$volumen->getOption('label')." ";
+    //echo $this->formElementErrors($name);
+    echo $formLabel->closeTag();
+    echo $this->formInput($volumen);
+?>
+</div>
+
+<hr />
+
+<div class="form_element">
+
+<?php
+    $anio = $form->get('anio');
+    echo $formLabel->openTag().$anio->getOption('label')." ";
+    //echo $this->formElementErrors($name);
+    echo $formLabel->closeTag();
+  echo $this->formInput($anio);
+?>
+</div>
+
+<hr />
+
+<div class="form_element">
+
+<?php
+    $edicion = $form->get('edicion');
+    echo $formLabel->openTag().$edicion->getOption('label')." ";
+    //echo $this->formElementErrors($name);
+    echo $formLabel->closeTag();
+   echo $this->formInput($edicion);
+?>
+</div>
+
+<hr />
+
+<div class="form_element">
+
+<?php
+    $editorial = $form->get('editorial');
+    echo $formLabel->openTag().$editorial->getOption('label')." ";
+    //echo $this->formElementErrors($name);
+    echo $formLabel->closeTag();
+   echo $this->formInput($editorial);
+?>
+</div>
+
+<hr />
+
+<div class="form_element">
+<?php
+    $tipo = $form->get('tipo');
+    echo $formLabel->openTag().$tipo->getLabel();
+    //echo $this->formElementErrors($lenguaje);
+    echo $formLabel->closeTag();
+    echo $this->formSelect($tipo);
+?>
+</div>
+
+<hr />
+
+
+<hr />
+
+<?php echo $this->formElement($form->get('send')) ?>
+
+<?php echo $this->form()->closeTag() ?>

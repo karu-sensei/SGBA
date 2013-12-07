@@ -1,0 +1,39 @@
+<h1><?php echo $this->titulo?></h1>
+<?php
+$form = $this->form;
+$form->prepare();
+//$a=$this->$datos['rut'];
+/*
+// Assuming the "contact/process" route exists...
+$form->setAttribute('action', $this->url('application/formulario/recibe'));
+
+// Set the method attribute for the form
+$form->setAttribute('method', 'post');
+*/
+
+$form->setAttributes(array(
+    'action' => $this->url.'/usuarios/gestion/eliminacarrera',
+    'method' => 'post'
+));
+// Get the form label plugin
+$formLabel = $this->plugin('formLabel');
+
+// Render the opening tag
+echo $this->form()->openTag($form);
+?>
+
+<div class="form_element">
+
+<?php
+    $carrera = $form->get('nombre_carrera');
+    echo $formLabel->openTag().$carrera->getOption('label')." ";
+    //echo $this->formElementErrors($name);
+    echo $formLabel->closeTag();
+	echo $this->formInput($carrera);
+    echo $this->formElement($form->get('eliminar'));
+?>
+
+</div>
+
+
+<?php echo $this->form()->closeTag() ?>

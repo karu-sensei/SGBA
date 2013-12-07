@@ -1,0 +1,51 @@
+<?php use Zend\Session\Container; 
+$user_session = new Container('user');?>
+<h1><?php echo $this->titulo?></h1>
+<?php
+$form = $this->form;
+$form->prepare();
+/*
+// Assuming the "contact/process" route exists...
+$form->setAttribute('action', $this->url('application/formulario/recibe'));
+
+// Set the method attribute for the form
+$form->setAttribute('method', 'post');
+*/
+
+$form->setAttributes(array(
+    'action' => $this->url.'/reservas/ingreso/guardar',
+    'method' => 'post'
+));
+// Get the form label plugin
+$formLabel = $this->plugin('formLabel');
+
+// Render the opening tag
+echo $this->form()->openTag($form);
+?>
+
+<div class="form_element">
+
+<?php
+    echo 'Usuario: '.$user_session->rut;
+?>
+<br />
+<?php
+    echo 'Material: '.$this->id;
+?>
+
+<?php
+    $date = $form->get('date');
+    echo $formLabel->openTag().$date->getLabel();
+    echo $this->formElementErrors($date);
+    echo $formLabel->closeTag();
+	echo $this->formInput($date);
+?>
+
+</div>
+   <?php echo $this->formHidden($form->get('oculto')) ?>
+   <?php echo $this->formHidden($form->get('oculto2')) ?>
+<hr />
+
+<?php echo $this->formElement($form->get('send')) ?>
+
+<?php echo $this->form()->closeTag() ?>

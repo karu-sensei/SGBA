@@ -1,0 +1,157 @@
+<div class="row-fluid titulo">
+<div class="container">
+
+<h4 style="color:white"><?php echo $this->titulo?></h4>
+</div>
+</div>
+<div class="row-fluid">
+<br>
+<br>
+</div>
+<div class="container" >
+<?php
+$form = $this->form;
+$form->prepare();
+/*
+// Assuming the "contact/process" route exists...
+$form->setAttribute('action', $this->url('application/formulario/recibe'));
+
+// Set the method attribute for the form
+$form->setAttribute('method', 'post');
+*/
+
+$form->setAttributes(array(
+    'action' => $this->url.'/materiales/ingreso/guardat',
+    'method' => 'post'
+));
+// Get the form label plugin
+$formLabel = $this->plugin('formLabel');
+
+// Render the opening tag
+echo $this->form()->openTag($form);
+?>
+
+<div class="row-fluid">
+        <div class="span6 well" style="padding-left:4%; padding-bottom:48px">
+
+<?php
+    $codigo = $form->get('codigo');
+    echo $formLabel->openTag().$codigo->getOption('label')." ";
+    //echo $this->formElementErrors($name);
+    echo $formLabel->closeTag();
+    echo $this->formInput($codigo);
+?>
+
+
+
+<?php
+    $titulo = $form->get('titulo');
+    echo $formLabel->openTag().$titulo->getOption('label')." ";
+    echo $this->formElementErrors($titulo);
+    echo $formLabel->closeTag();
+	echo $this->formInput($titulo);
+?>
+
+
+
+<?php
+    $autor = $form->get('autor');
+    echo $formLabel->openTag().$autor->getOption('label')." ";
+    echo $this->formElementErrors($autor);
+    echo $formLabel->closeTag();
+	echo $this->formInput($autor);
+?>
+
+<?php
+    $tipo_tesis = $form->get('tipo_tesis');
+    echo $formLabel->openTag().$tipo_tesis->getLabel();
+    //echo $this->formElementErrors($lenguaje);
+    echo $formLabel->closeTag();
+    echo $this->formSelect($tipo_tesis);
+?>
+
+
+
+<?php
+    $anio = $form->get('anio');
+    echo $formLabel->openTag().$anio->getOption('label')." ";
+    echo $formLabel->closeTag();
+    echo $this->formInput($anio);
+    
+?>
+
+
+
+<?php
+    $numero_paginas = $form->get('numero_paginas');
+    echo $formLabel->openTag().$numero_paginas->getOption('label')." ";
+    //echo $this->formElementErrors($name);
+    echo $formLabel->closeTag();
+	 echo $this->formInput($numero_paginas);
+?>
+
+
+<?php
+    $descripcion = $form->get('descripcion');
+    echo $formLabel->openTag().$descripcion->getOption('label')." ";
+    //echo $this->formElementErrors($pass);
+    echo $formLabel->closeTag();
+    echo $this->formTextarea($descripcion);
+?>
+
+</div>
+<div class="span6 well" style="padding-left:4%; padding-bottom:60px">
+
+<?php
+    $idioma = $form->get('idioma');
+    echo $formLabel->openTag().$idioma->getLabel();
+    //echo $this->formElementErrors($lenguaje);
+    echo $formLabel->closeTag();
+    echo $this->formSelect($idioma);
+?>
+<br>
+<br>
+
+<?php
+    $date = $form->get('date');
+    echo $formLabel->openTag().$date->getLabel();
+    //echo $formLabel->openTag().$date->getOption('label')." ";
+    //echo $this->formElementErrors($name);
+    echo $formLabel->closeTag();
+    echo $this->formInput($date);
+?>
+<br>
+<br>
+<?php
+   $fono = $form->get('pal_clav');
+    echo $formLabel->openTag().$fono->getOption('label')." ";
+    //echo $this->formElementErrors($name);
+    echo $formLabel->closeTag();
+	echo $this->formTextarea($fono);
+?>
+
+
+<br>
+<br>
+<?php
+    $numero = $form->get('numero');
+    echo $formLabel->openTag().$numero->getLabel();
+    echo $formLabel->closeTag();
+    echo $this->formInput($numero);
+?>
+<br>
+<br>
+
+<?php
+    $copia = $form->get('copia');
+    echo $formLabel->openTag().$copia->getLabel();
+    echo $formLabel->closeTag();
+    echo $this->formRadio($copia);
+    ?>
+
+
+<?php echo $this->formElement($form->get('send')) ?>
+</div>
+</div>
+</div>
+<?php echo $this->form()->closeTag() ?>

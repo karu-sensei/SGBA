@@ -1,0 +1,52 @@
+<div class="row-fluid titulo">
+<div class="container">
+<h4 style="color:white"><?php echo $this->titulo?></h4>
+</div>
+</div>
+<div class="row-fluid">
+<br>
+<br>
+</div>
+<div class="container well" >
+<br>
+<br>
+<?php
+$form = $this->form;
+$form->prepare();
+//$a=$this->$datos['rut'];
+/*
+// Assuming the "contact/process" route exists...
+$form->setAttribute('action', $this->url('application/formulario/recibe'));
+
+// Set the method attribute for the form
+$form->setAttribute('method', 'post');
+*/
+
+
+
+$form->setAttributes(array(
+    'action' => $this->url.'/usuarios/editar/editar',
+    'method' => 'post'
+));
+// Get the form label plugin
+$formLabel = $this->plugin('formLabel');
+
+// Render the opening tag
+echo $this->form()->openTag($form);
+?>
+
+
+<?php
+    $rut = $form->get('buscar_usuario');
+
+    echo $this->formElementErrors($rut);
+
+	echo $this->formInput($rut);
+?>  &nbsp;
+<?php
+    echo $this->formElement($form->get('buscar'));
+?>
+<br>
+<br>
+</div>
+<?php echo $this->form()->closeTag() ?>
